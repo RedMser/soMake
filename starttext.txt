@@ -1,0 +1,9 @@
+Hey there!
+
+Thanks for taking interest in soMake.
+Please note that, due to it being in early development stages, it may have unfinished or not yet implemented features, and bugs are bound to be there.
+
+If you wish to help the development process, please report any bugs, make suggestions or send feedback on the GitHub page! :)
+I'm there if there are any issues!
+
+That's all, happy mapping!
