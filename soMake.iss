@@ -53,14 +53,21 @@ begin
 end;
 procedure InstallFramework;
 var
+  StatusText: string;
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{tmp}\NDP452-KB2901954-Web.exe'), '/q /norestart', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
-  begin
-    // you can interact with the user that the installation failed
-    MsgBox('.NET installation failed with code: ' + IntToStr(ResultCode) + '.',
+  StatusText := WizardForm.StatusLabel.Caption;
+  WizardForm.StatusLabel.Caption := 'Installing .NET framework...';
+  WizardForm.ProgressGauge.Style := npbstMarquee;
+  try
+    if not Exec(ExpandConstant('{tmp}\NDP452-KB2901954-Web.exe'), '/q /norestart', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+      begin
+      // you can interact with the user that the installation failed
+      MsgBox('.NET installation failed with code: ' + IntToStr(ResultCode) + '.',
       mbError, MB_OK);
   end;
+  finally
+    WizardForm.StatusLabel.Caption := StatusText;
+    WizardForm.ProgressGauge.Style := npbstNormal;
+  end;
 end;
-
-
